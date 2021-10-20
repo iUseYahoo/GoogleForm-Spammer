@@ -1,8 +1,8 @@
 import requests
 import threading
 
-#warning to retards who will do 5000 thrads... bcos theyre tards
-print("\n\nNOTE: This can lag your computer very fucking hard depending on how many threads you use KEEP THE THREADS NUMBER DOWN\n\n")
+# thread about warning, can lag your computer
+print("\n\nNOTE: This can lag your computer depending on how many threads you use\n\n")
 
 print("\nExample: https://docs.google.com/forms/d/e/1FAIpQLSdUgjyuJ14J6fkNFvrsY0pGdk8oYgbXI4cEYzli79t4PDnvlw\n") # example link
 
@@ -12,12 +12,12 @@ formurl = input("Enter the form url without the /viewform at the end: ") # the t
 requestURL = f"{formurl}/formResponse" # the requested REST POST url
 threadAmount = int(input("Amount of Threads: ")) # threads amount
 
-# threads for speed :)
+# threads list to be appended to later
 threads = []
 
-#basic def function holding all the actual code
+# main function
 def REQ():
-    # While True loop pretty much just infinite loop
+    # While True loop so it doesnt stop unless you kill it
     while True:
         #names the request doReq to be able to get the status code and error text
         doReq = requests.post(requestURL, data={ # form data requested be the form
@@ -37,14 +37,11 @@ def REQ():
         # if the status code returns with 200 "OK" then itll tell you it passed
         if (doReq.status_code == 200):
             print(f"[+] Successfully sent to {requestURL}")
-        else: # else it will not tell you and let you know it fucking
+        else: # else it will not tell you and let you know it failed
             print(f"[-] Failed to send. Code: {doReq.status_code}\n[*] Error Data: {doReq.text}")
             exit()
 
-# dont worry about this 
-# THIS
-# IS
-# SPEEEEEEEEEEEED
+# Threading Needed for the speed
 for i in range(threadAmount):
     t = threading.Thread(target=REQ)
     t.daemon = True
