@@ -9,3 +9,6 @@
 ### Python Packages Needed
 - `pip3 install requests`
 - Note that requests should be auto installed with Python.
+
+### Script Usage
+- `python3 formspammer.py`
