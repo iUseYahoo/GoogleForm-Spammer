@@ -1,4 +1,5 @@
 ### Google Form Spammer
+- Note: Spammer wont work if Email Address is required.
 
 ### Information
 - This [Python](https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe)
